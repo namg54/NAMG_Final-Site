@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "محصولات";
+}
+
+
+<section id="services" class="services">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>محصولات</h2>
+            <p>از میان بهترین ها انتخاب کنید</p>
+        </div>
+        
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <partial name="_BoxProduct" model="@item"/>
+            }
+        </div>
+
+
+    </div>
+</section>

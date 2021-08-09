@@ -1,0 +1,260 @@
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc.ModelBinding.Binders
+
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="favicon/ico" href="~/Images/favicon.ico">
+    <title>@ViewData["Title"] - NAMG_Final</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="lib/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="lib/glightbox/css/glightbox.min.css" rel="stylesheet" />
+
+    <link href="lib/boxicons/css/boxicons.css" rel="stylesheet" />
+    <link href="~/lib/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+
+    <header>
+
+        <nav class="navbar navbar-expand-md  navbar-dark bg-dark  fixed-top box-shadow  mb-3">
+
+            <div class="container">
+
+                <a class="navbar-brand " style="text-decoration: none; font-size: 10.5em" href="#!"><h4>NA<span style="color: darkorange">MG</span></h4></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-md-inline-flex justify-content-between " id="menu">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li id="li" class="nav-item  ">
+                            <a class="a nav-link " asp-controller="Home" asp-action="About">خانه</a>
+                        </li>
+                        @*<li id="li" class="a nav-item">
+                            <a class="a nav-link scrollto" asp-controller="Home" asp-action="About">درباره ما</a>
+                        </li>*@
+                        <li id="li" class="nav-item dropdown">
+                            <a class="a nav-link dropdown-toggle " data-toggle="dropdown" href="#">محصولات</a>
+                            <ul class="dropdown-menu bg-dark " style="width: max-content">
+                                @await Component.InvokeAsync("ProductGroups");
+                            </ul>
+                        </li>
+                        <li id="li" class="a nav-item">
+                            <a class="a nav-link scrollto" asp-controller="Home" asp-action="Resume">رزومه ما</a>
+                        </li>
+                        <li id="li" class="nav-item">
+                            <a class="a nav-link " asp-area="" asp-controller="Home" asp-action="Contact">راه های ارتباطی ما</a>
+                        </li>
+                      
+                    </ul>
+                    <ul class="nav navbar-nav ">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li id="li"><a class="nav-link " style="color: rgba(255, 255, 255, .55); text-decoration: none"><span class="glyphicon glyphicon-user"> </span>@User.Identity.Name خوش آمدید</a></li>
+                            <li id="li"><a asp-controller="Account" asp-action="Logout" class="nav-link " style="color: rgba(255, 255, 255, .55); text-decoration: none"><span class="glyphicon glyphicon-log-out"> </span> خروج</a></li>
+                            <li id="li"><a asp-controller="Product" asp-action="ShowCart" class="nav-link " style="color: rgba(255, 255, 255, .55); text-decoration: none"><span class="ri-shopping-cart-fill"> </span></a></li>
+                        }
+                        else
+                        {
+                            <li id="li"><a asp-controller="Account" asp-action="Register" class="nav-link  " style="text-decoration: none"><span class="glyphicon glyphicon-user"> </span> ثبت نام</a></li>
+                            <li id="li"><a asp-controller="Account" asp-action="Login" class="nav-link " style="color: rgba(255, 255, 255, .55); text-decoration: none"><span class="glyphicon glyphicon-log-in"> </span> ورود</a></li>
+
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" class="d-flex align-items-center justify-content-center">
+        <div class="container " data-aos="fade-up">
+
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-xl-6 col-lg-8">
+                    <h1>تعریف <span> کیفیت </span>اینجاست</h1>
+                    <h2>ما ابر قهرمان های اتوماسیون هستیم</h2>
+                </div>
+            </div>
+
+            <div class="row gy-4 mt-5 justify-content-center " data-aos="zoom-in" data-aos-delay="250">
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="ri-secure-payment-line"></i>
+                        <h3 id="h3">امنیت</h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="ri-search-eye-line"></i>
+                        <h3 id="h3">دقت</h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="ri-speed-mini-line"></i>
+                        <h3 id="h3">سرعت</h3>
+                    </div>
+                </div>
+                @*<div class="col-xl-2 col-md-4">
+                        <div class="icon-box">
+                            <i class="ri-resu-line"></i>
+                            <h3><a href="">Magni Dolores</a></h3>
+                        </div>
+                    </div>*@
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="ri-heart-line"></i>
+                        <h3 id="h3">جذابیت</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <br /><br /><br />
+            @RenderBody()
+            <br /><br /><br />
+        </main>
+
+    </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-primary btn-floating m-1" href="https://facebook.com/namg54" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-primary btn-floating m-1" href="https://twitter.com/morteza93751575" role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-primary btn-floating m-1" href="https://join.skype.com/invite/bHeHjQ7SX35o" role="button">
+                    <i class="fab fa-skype"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-danger btn-floating m-1" href="https://www.instagram.com/morteza.khorsand54/" role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-primary btn-floating m-1" href="https://www.linkedin.com/in/morteza-khorsand-6aa390202" role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/namg54" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+            <!-- Section: Form -->
+            <!-- Section: Form -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row col-md-auto ">
+                    <!-- Section: Text -->
+                    <section class="col-lg-4 col-md-4 ">
+                        <p>
+                            <h4 align="center"><ul>آدرس:</ul></h4>
+                            <h6> تهران-خیابان شریعتی-جنب مترو صدر-پلاک1</h6>
+                            <h4 align="center"><ul>تلفن:</ul></h4>
+                            <h6>021-125-4848</h6>
+                            <h6>021-125-4849</h6>
+                            <h6>021-125-4850</h6>
+                            <h4 align="center"><ul>ایمیل:</ul></h4>
+                            <h6>info@namg.ir</h6>
+                        </p>
+                    </section>
+                    <!-- Section: Text -->
+                    <!-- Section: Links -->
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-4 ">
+                        <h5 class="text-uppercase mb-3">منو</h5>
+                        <strong>
+                            <ul class="list-unstyled mb-0">
+                                <li id="li" class="mb-3">
+                                    <a href="#!" class="a text-white bold">خانه</a>
+                                </li>
+                                <li id="li" class="mb-3">
+                                    <a class="a text-white bold" asp-controller="Home" asp-action="About">درباره ما</a>
+                                </li>
+                                <li id="li" class="mb-3">
+                                    <a class="a text-white bold" asp-controller="Home" asp-action="Contact">راه های ارتباطی ما</a>
+                                </li>
+                            </ul>
+                        </strong>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-4 ">
+                        <strong>
+                            <h5 class="text-uppercase mb-3" align="center">محصولات</h5>
+
+                            <ul class="a list-unstyled mb-0">
+                                <li id="li" class="mb-3">
+                                    <a href="#!" class="a text-white bold">اتوماسیون های اداری</a>
+                                </li>
+                                <li id="li" class="mb-3">
+                                    <a href="#!" class="a text-white bold">اتوماسیون صنعتی</a>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li id="li" class="mb-3">
+                                    <a href="#!" class="a text-white bold">همه ی زیرسیستم های اتوماسیون </a>
+                                </li>
+
+                            </ul>
+                        </strong>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+    </footer>
+    <a href="#hero" class="back-to-top d-flex align-items-center justify-content-center active"><i class="ri-arrow-up-line"></i></a>
+    <!-- Footer -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@*<script src="~/js/validate.js"></script>*@
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+    <script src="~/lib/purecounter/purecounter.js"></script>
+    <script src="~/lib/swiper/swiper-bundle.min.js"></script>
+<script src="~/lib/isotope-layout/isotope.pkgd.js"></script>
+<script src="lib/glightbox/js/glightbox.min.js"></script>
+<script src="~/js/main.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/font-awesome/js/all.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

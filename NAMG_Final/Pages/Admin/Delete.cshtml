@@ -1,0 +1,48 @@
+﻿@page
+@model NAMG_Final.Pages.Admin.DeleteModel
+@{ ViewData["Title"] = "حذف کردن محصولات";
+}
+
+
+
+<div class="section-title">
+    <h2>محصولات</h2>
+    <p>بخش حذف محصولات</p>
+</div>
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Product.Id" />
+    <table class="table table-dark table-striped table-hover ">
+        <thead>
+            <tr>
+                <th scope="col"><label asp-for="Product.Name"></label></th>
+                <th scope="col"><label asp-for="Product.Description"></label></th>
+                <th scope="col"><label >تصویر</label></th>
+                <th scope="col">ثبت</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <input asp-for="Product.Name" readonly="readonly" />
+                    <span asp-validation-for="Product.Name"></span>
+                </th>
+                <td>
+                    <textarea asp-for="Product.Description" readonly="readonly"></textarea>
+                    <span asp-validation-for="Product.Description"></span>
+                </td>
+                <td>
+                  <img src="/Images/Products/@(Model.Product.Id).jpg" style="max-width: 200px"/>
+                </td>
+                <td>
+                   
+                        <input type="hidden" asp-for="Product.Id" readonly="readonly"/>
+                        <input type="submit" class="btn btn-danger" value="حذف"/>
+                  
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+</form>

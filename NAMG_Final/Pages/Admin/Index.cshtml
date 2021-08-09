@@ -1,0 +1,52 @@
+﻿@page
+@model NAMG_Final.Pages.Admin.IndexModel
+    @{
+        ViewData["Title"] = "صفحعه اصلی مدیریت ";
+        int count = 0;
+        Layout = "~/Pages/Shared/_Layout.cshtml";
+    }
+ 
+
+
+<section id="services" class="services">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>محصولات</h2>
+            <p>محصولات خود را مدیریت کنید</p>
+        </div>
+        <p style="text-align:center" >
+        <a asp-page="AddProduct" class="btn btn-primary">افزودن محصول</a>
+        </p>
+
+
+            <table class="table table-dark table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"> نام محصول</th>
+                        <th scope="col">قیمت</th>
+                        <th scope="col">تصویر</th>
+                        <th scope="col">دستورات</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    @foreach (var item in Model.Products)
+                    {
+                        <tr>
+                            <th scope="row">@(count=count+1)</th>
+                            <td>@item.Name</td>
+                            <td>@item.Item.Price.ToString("##,###") تومان</td>
+                            <td><img src="/Images/Products/@(item.Id).jpg" style="width: 300px; height: 200px" class="img-thumbnail" /></td>
+                            <td>
+                                <a  style="color: #0366d6;text-decoration: none;" asp-page="EditProduct" asp-route-id="@item.Id">ویرایش</a>
+                                <a  style="color: #0366d6;text-decoration: none;" asp-page="Delete" asp-route-id="@item.Id">حذف</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+    </div>
+</section>

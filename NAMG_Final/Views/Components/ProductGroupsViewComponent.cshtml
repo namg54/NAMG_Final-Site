@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ShowGroupViewModel>
+@foreach (var item in Model)
+{
+    <li id="li"><a class="a nav-link " href="/Group/@item.GroupId/@item.name">@item.name <span class="badge badge-danger badge-pill" >@item.ProductCount</span> </a></li>
+    
+}

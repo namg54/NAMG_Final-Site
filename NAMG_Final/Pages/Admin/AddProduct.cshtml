@@ -1,0 +1,61 @@
+﻿@page
+@model NAMG_Final.Pages.Admin.AddProductModel
+@{
+    ViewData["Title"] = "اضافه کردن محصولات";
+}
+
+<div class="section-title">
+    <h2>محصولات</h2>
+    <p>محصولات خود را اضافه کنید</p>
+</div>
+<form method="post" enctype="multipart/form-data">
+    <table class="table table-dark table-striped table-hover ">
+        <thead>
+            <tr>
+                <th scope="col"><label asp-for="Product.Name"></label></th>
+                <th scope="col"><label asp-for="Product.Description"></label></th>
+                <th scope="col"><label asp-for="Product.Price"></label></th>
+                <th scope="col"><label asp-for="Product.QuantityInStock"></label></th>
+                <th scope="col"><label asp-for="Product.Picture"></label></th>
+                <th scope="col"><label >گروه بندی محصول</label></th>
+                <th scope="col">ثبت</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <input asp-for="Product.Name" />
+                    <span asp-validation-for="Product.Name"></span>
+                </th>
+                <td>
+                    <textarea asp-for="Product.Description"></textarea>
+                    <span asp-validation-for="Product.Description"></span>
+                </td>
+                <td>
+                    <input asp-for="Product.Price" />
+                    <span asp-validation-for="Product.Price"></span>
+                </td>
+                <td>
+                    <input asp-for="Product.QuantityInStock" />
+                    <span asp-validation-for="Product.QuantityInStock"></span>
+                </td>
+                <td>
+                    <input asp-for="Product.Picture" />
+                    <span asp-validation-for="Product.Picture"></span>
+                </td>
+                <td>
+                    @foreach (var item in Model.Product.Categories)
+                    {
+                        <p><input type="checkbox"name="SelectedGroups" value="@item.Id"/>@item.Name</p>
+                    }
+                </td>
+               
+                <td> <input type="submit" value="ثبت" class="btn btn-primary" /></td>
+                
+
+            </tr>
+        
+        </tbody>
+    </table>
+
+</form>

@@ -1,0 +1,13 @@
+﻿@model Product
+
+<div class="col-lg-4 col-md-6 d-flex align-Models-stretch aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+    <div class="icon-box" id="Nowrap" >
+        
+            <div  class="icon"><img class="bx" src="/Images/Products/@(Model.Id).jpg" style="width: 300px;height: 200px" /></div>
+        <br />
+        <h4>@Model.Name</h4>
+            <p id="Nowrap"style="width: auto;height: auto">@Model.Description</p>
+            <h4><a style="color:#e0ffff;text-decoration: none;" class="btn btn-success" asp-action="Details" asp-controller="Product" asp-route-Id="@Model.Id">جزئیات بیشتر</a></h4>
+
+       </div>  
+</div>

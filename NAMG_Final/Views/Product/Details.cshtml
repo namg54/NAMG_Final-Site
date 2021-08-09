@@ -1,0 +1,35 @@
+﻿@model DetailsViewModel
+@{
+    ViewData["Title"] = "جزئیات محصول" + Model.Product.Name;
+
+}
+
+<section id="Home" class="about">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+      
+            <div class="row">
+
+                <div class="col-lg-6 order-1 order-lg-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="100">
+                    <img src="@($"/Images/Products/{Model.Product.Id}.jpg")" class="img-fluid img-thumbnail" alt="@Model.Product.Name">
+                </div>
+                <div style="text-overflow:clip" class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content aos-init aos-animate " data-aos="fade-right" data-aos-delay="100">
+                    <h3 >@Model.Product.Name</h3>
+                    <p style="text-align:justify" class="order-1">
+                        @Model.Product.Description
+                    </p>
+                    <p class="fst-italic order-2">قیمت این محصول : @Model.Product.Item.Price.ToString("##,###") تومان </p>
+                    <ul>
+                        این محصول در دسته بندی های زیر قرار دارد: 
+                        @foreach (var item in Model.Categories)
+                        {
+                            <ol type="i">
+                        <li class="order-3">@item.Name</li>
+                            </ol>
+                        }
+                    </ul>
+                    <a class="btn btn-primary" asp-action="AddToCart" asp-controller="Product" asp-route-itemid="@Model.Product.ItemId">افزودن به سبد خرید</a>
+                </div>
+            </div>
+     
+    </div>
+</section>

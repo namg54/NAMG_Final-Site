@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\wwwroot\automation_Site</_PublishTargetUrl>
+    <History>True|2021-07-14T14:54:38.4033514Z;True|2021-07-14T07:11:05.0461891+04:30;True|2021-07-14T05:16:07.9966658+04:30;True|2021-07-07T20:21:20.2052714+04:30;True|2021-07-07T13:56:44.6959614+04:30;True|2021-07-07T10:53:25.8030409+04:30;True|2021-07-07T04:09:51.3581416+04:30;True|2021-07-06T10:01:22.0994544+04:30;True|2021-07-05T13:58:20.5896947+04:30;True|2021-07-05T13:54:58.5373663+04:30;True|2021-06-30T02:59:38.4969894+04:30;True|2021-06-27T17:19:41.4455240+04:30;</History>
+  </PropertyGroup>
+</Project>

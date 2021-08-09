@@ -1,0 +1,84 @@
+﻿@using System.Web;
+@model ContactViewModel
+@{
+
+
+    ViewData["Title"] = "ارتباط با ما";
+    
+}
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>ارتباط</h2>
+            <p>راه های ارتباطی با ما</p>
+        </div>
+
+        <div>
+            <iframe style="border:0; width: 100%; height: 270px;"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1618.2990279142884!2d51.43678791651581!3d35.78524863607789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e05d40bcee323%3A0xd2a36ce42cc46d6b!2z2KfYs9iq2KfZhiDYqtmH2LHYp9mG2Iwg2KrZh9ix2KfZhtiMINiu24zYp9io2KfZhiDYtNix24zYudiq24zYjCDYp9uM2LHYp9mG!5e0!3m2!1sfa!2s!4v1624323044830!5m2!1sfa!2s" frameborder="0" allowfullscreen=""></iframe>
+       
+            </div>
+
+        <div class="row mt-5">
+
+            <div class="col-lg-4">
+                <div class="info">
+                    <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>آدرس:</h4>
+                        <p>تهران-خیابان شریعتی-جنب مترو صدر-پلاک1</p>
+                    </div>
+
+                    <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <h4>ایمیل:</h4>
+                        <p>khorsandmorteza013@gmail.com</p>
+                    </div>
+
+                    <div class="phone">
+                        <i class="bi bi-phone"></i>
+                        <h4>تلفن:</h4>
+                        <p>021-125-4848-50</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0">
+
+                <form asp-action="ContactUs">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input asp-for="name" type="text"  class="form-control" id="name" placeholder="نام کامل" required="">
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input asp-for="email" type="email" class="form-control"  id="email" placeholder="ایمیل" required="">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input asp-for="subject" type="text" class="form-control"  id="subject" placeholder="عنوان" required="">
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea asp-for="message" class="form-control"  rows="5" placeholder="پیام" required=""></textarea>
+                    </div>
+                    @*<div class="my-3">
+                        <div class="loading">در حال ارسال</div>
+                        <div class="error-message">متاسفانه پیام شما ارسال نشد</div>
+                        <div class="sent-message">پیام شما ارسال شد.ممنونیم</div>
+                    </div>*@
+                    <br />
+                    <div class="text-center"><button class="btn btn-danger" type="submit">ارسال پیام</button></div>
+                   
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ======= End Contact Section ======= -->
