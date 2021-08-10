@@ -36,8 +36,8 @@ namespace NAMG_Final
 
             #region  Db Context
 
-            //services.AddDbContext<MySiteContext>(options => options.UseSqlServer("Data Source = .;Initial Catalog=automation_DB;Integrated Security=true"));
-            services.AddDbContext<MySiteContext>(options => options.UseSqlServer("Server=.;Initial Catalog=namgir_namg_DB;User Id=namgir_namg_DB;Password=D&587joz;MultipleActiveResultSets=true"));
+            services.AddDbContext<MySiteContext>(options => options.UseSqlServer("Data Source = .;Initial Catalog=automation_DB;Integrated Security=true"));
+            //services.AddDbContext<MySiteContext>(options => options.UseSqlServer("Server=.;Initial Catalog=namgir_namg_DB;User Id=namgir_namg_DB;Password=D&587joz;MultipleActiveResultSets=true"));
 
             #endregion
 
